@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals Tracker Journal</title>
+</head>
+<body>
+    <h1>Goals Tracker Journal</h1>
+    
+    <h2>Set Weekly Goals</h2>
+    <form method="post">
+        <input type="hidden" name="set_goals" value="1">
+        <label>Assignments (min hours):</label>
+        <input type="number" name="assignments_goal" step="0.1" required><br>
+        <label>Friends (max hours):</label>
+        <input type="number" name="friends_goal" step="0.1" required><br>
+        <label>Screen Time (max hours):</label>
+        <input type="number" name="screen_goal" step="0.1" required><br>
+        <label>Exercise (min hours):</label>
+        <input type="number" name="exercise_goal" step="0.1" required><br><br>
+        <button type="submit">Set Goals</button>
+    </form>
+
+    <h2>Log Time</h2>
+    <form method="post">
+        <input type="hidden" name="log_time" value="1">
+        <label>Category:</label>
+        <select name="data_type">
+            <option value="assignments">Assignments</option>
+            <option value="friends">Friends</option>
+            <option value="screen">Screen</option>
+            <option value="exercise">Exercise</option>
+        </select><br>
+        <label>Time Spent (hours):</label>
+        <input type="number" name="time_spent" step="0.1" required><br><br>
+        <button type="submit">Log Time</button>
+    </form>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    <h2>Visualizations</h2>
+    <div>
+        <h3>Assignments Progress</h3>
+        <img src="/static/plots/assignments.png" alt="Assignments Chart">
+    </div>
+    <div>
+        <h3>Friends Progress</h3>
+        <img src="/static/plots/friends.png" alt="Friends Chart">
+    </div>
+    <div>
+        <h3>Screen Time Progress</h3>
+        <img src="/static/plots/screen.png" alt="Screen Chart">
+    </div>
+    <div>
+        <h3>Exercise Progress</h3>
+        <img src="/static/plots/exercise.png" alt="Exercise Chart">
+    </div>
+</body>
+</html>
